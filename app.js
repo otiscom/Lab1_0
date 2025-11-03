@@ -1,6 +1,7 @@
 const express = require('express');
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
+const infoRoutes = require('./routes/info');
 const req = require('express/lib/request');
 const path = require('path');
 
@@ -12,6 +13,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
+app.use('/info', infoRoutes);
 
 app.use((req, res, next) => {
     res.status(404).sendFile(
